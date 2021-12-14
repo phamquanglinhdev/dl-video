@@ -9,4 +9,12 @@ class Video extends Model
 {
     use \Backpack\CRUD\app\Models\Traits\CrudTrait;
     use HasFactory;
+
+    /**
+     * @var mixed
+     */
+
+    public function removeSpace(){
+        return str_replace("%nbsp;","",$this->content);
+    }
 }

@@ -2,8 +2,11 @@
 @section("banner")
     <div class="tm-welcome-container tm-fixed-header tm-fixed-header-1">
         <div class="text-center">
-            <p class="pt-5 px-3 tm-welcome-text tm-welcome-text-2 mb-1 text-white mx-auto">Background image can be
-                fixed. Content will simply slide over.</p>
+            @if(backpack_auth()->check())
+                <p class="pt-5 px-3 tm-welcome-text tm-welcome-text-2 mb-1 text-white mx-auto">Đang xem với tài khoản : {{backpack_user()->name}}</p>
+            @else
+                <p class="pt-5 px-3 tm-welcome-text tm-welcome-text-2 mb-1 text-white mx-auto">Đang xem với tư cách khách</p>
+            @endif
         </div>
     </div>
 
@@ -18,6 +21,7 @@
                 <!-- Video player 1422x800 -->
                 @if(isset($video))
                     <video width="1422" height="800" controls autoplay>
+                        <source src="{{$video->src}}" type="video/wmv">
                         <source src="{{$video->src}}" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
@@ -40,15 +44,15 @@
                     <h6 class="tm-share-box-title mb-4">Share this video</h6>
                     <div class="mb-5 d-flex">
                         <a href="" class="tm-bg-white tm-share-button"><i class="fab fa-facebook"></i></a>
-{{--                        <a href="" class="tm-bg-white tm-share-button"><i class="fab fa-twitter"></i></a>--}}
-{{--                        <a href="" class="tm-bg-white tm-share-button"><i class="fab fa-pinterest"></i></a>--}}
-{{--                        <a href="" class="tm-bg-white tm-share-button"><i class="far fa-envelope"></i></a>--}}
+                        {{--                        <a href="" class="tm-bg-white tm-share-button"><i class="fab fa-twitter"></i></a>--}}
+                        {{--                        <a href="" class="tm-bg-white tm-share-button"><i class="fab fa-pinterest"></i></a>--}}
+                        {{--                        <a href="" class="tm-bg-white tm-share-button"><i class="far fa-envelope"></i></a>--}}
                     </div>
-{{--                    <p class="mb-4">Author: <a href="https://templatemo.com" class="tm-text-link">TemplateMo</a></p>--}}
+                    {{--                    <p class="mb-4">Author: <a href="https://templatemo.com" class="tm-text-link">TemplateMo</a></p>--}}
                     <a href="#" class="tm-bg-white px-5 mb-4 d-inline-block tm-text-primary tm-likes-box tm-liked">
-{{--                        <i class="fas fa-heart mr-3 tm-liked-icon"></i>--}}
-{{--                        <i class="far fa-heart mr-3 tm-not-liked-icon"></i>--}}
-{{--                        <span id="tm-likes-count">486 likes</span>--}}
+                        {{--                        <i class="fas fa-heart mr-3 tm-liked-icon"></i>--}}
+                        {{--                        <i class="far fa-heart mr-3 tm-not-liked-icon"></i>--}}
+                        {{--                        <span id="tm-likes-count">486 likes</span>--}}
                     </a>
                     <div>
                         <a href="#">
@@ -59,85 +63,86 @@
                 </div>
             </div>
         </div>
-{{--        <div class="row pt-4 pb-5">--}}
-{{--            <div class="col-12">--}}
-{{--                <h2 class="mb-5 tm-text-primary">Related Videos for You</h2>--}}
-{{--                <div class="row tm-catalog-item-list">--}}
-{{--                    <div class="col-lg-4 col-md-6 col-sm-12 tm-catalog-item">--}}
-{{--                        <div class="position-relative tm-thumbnail-container">--}}
-{{--                            <img src="img/tn-01.jpg" alt="Image" class="img-fluid tm-catalog-item-img">--}}
-{{--                            <a href="video-page.html" class="position-absolute tm-img-overlay">--}}
-{{--                                <i class="fas fa-play tm-overlay-icon"></i>--}}
-{{--                            </a>--}}
-{{--                        </div>--}}
-{{--                        <div class="p-3 tm-catalog-item-description">--}}
-{{--                            <h3 class="tm-text-gray text-center tm-catalog-item-title">Nam tincidunt consectetur</h3>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                    <div class="col-lg-4 col-md-6 col-sm-12 tm-catalog-item">--}}
-{{--                        <div class="position-relative tm-thumbnail-container">--}}
-{{--                            <img src="img/tn-02.jpg" alt="Image" class="img-fluid tm-catalog-item-img">--}}
-{{--                            <a href="video-page.html" class="position-absolute tm-img-overlay">--}}
-{{--                                <i class="fas fa-play tm-overlay-icon"></i>--}}
-{{--                            </a>--}}
-{{--                        </div>--}}
-{{--                        <div class="p-3 tm-catalog-item-description">--}}
-{{--                            <h3 class="tm-text-gray text-center tm-catalog-item-title">Praesent posuere rhoncus</h3>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                    <div class="col-lg-4 col-md-6 col-sm-12 tm-catalog-item">--}}
-{{--                        <div class="position-relative tm-thumbnail-container">--}}
-{{--                            <img src="img/tn-03.jpg" alt="Image" class="img-fluid tm-catalog-item-img">--}}
-{{--                            <a href="video-page.html" class="position-absolute tm-img-overlay">--}}
-{{--                                <i class="fas fa-play tm-overlay-icon"></i>--}}
-{{--                            </a>--}}
-{{--                        </div>--}}
-{{--                        <div class="p-3 tm-catalog-item-description">--}}
-{{--                            <h3 class="tm-text-gray text-center tm-catalog-item-title">Turpis massa aliquam</h3>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                    <div class="col-lg-4 col-md-6 col-sm-12 tm-catalog-item">--}}
-{{--                        <div class="position-relative tm-thumbnail-container">--}}
-{{--                            <img src="img/tn-04.jpg" alt="Image" class="img-fluid tm-catalog-item-img">--}}
-{{--                            <a href="video-page.html" class="position-absolute tm-img-overlay">--}}
-{{--                                <i class="fas fa-play tm-overlay-icon"></i>--}}
-{{--                            </a>--}}
-{{--                        </div>--}}
-{{--                        <div class="p-3 tm-catalog-item-description">--}}
-{{--                            <h3 class="tm-text-gray text-center tm-catalog-item-title">Nam tincidunt consectetur</h3>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                    <div class="col-lg-4 col-md-6 col-sm-12 tm-catalog-item">--}}
-{{--                        <div class="position-relative tm-thumbnail-container">--}}
-{{--                            <img src="img/tn-05.jpg" alt="Image" class="img-fluid tm-catalog-item-img">--}}
-{{--                            <a href="video-page.html" class="position-absolute tm-img-overlay">--}}
-{{--                                <i class="fas fa-play tm-overlay-icon"></i>--}}
-{{--                            </a>--}}
-{{--                        </div>--}}
-{{--                        <div class="p-3 tm-catalog-item-description">--}}
-{{--                            <h3 class="tm-text-gray text-center tm-catalog-item-title">Praesent posuere rhoncus</h3>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                    <div class="col-lg-4 col-md-6 col-sm-12 tm-catalog-item">--}}
-{{--                        <div class="position-relative tm-thumbnail-container">--}}
-{{--                            <img src="img/tn-06.jpg" alt="Image" class="img-fluid tm-catalog-item-img">--}}
-{{--                            <a href="video-page.html" class="position-absolute tm-img-overlay">--}}
-{{--                                <i class="fas fa-play tm-overlay-icon"></i>--}}
-{{--                            </a>--}}
-{{--                        </div>--}}
-{{--                        <div class="p-3 tm-catalog-item-description">--}}
-{{--                            <h3 class="tm-text-gray text-center tm-catalog-item-title">Turpis massa aliquam</h3>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </div>--}}
+        {{--        <div class="row pt-4 pb-5">--}}
+        {{--            <div class="col-12">--}}
+        {{--                <h2 class="mb-5 tm-text-primary">Related Videos for You</h2>--}}
+        {{--                <div class="row tm-catalog-item-list">--}}
+        {{--                    <div class="col-lg-4 col-md-6 col-sm-12 tm-catalog-item">--}}
+        {{--                        <div class="position-relative tm-thumbnail-container">--}}
+        {{--                            <img src="img/tn-01.jpg" alt="Image" class="img-fluid tm-catalog-item-img">--}}
+        {{--                            <a href="video-page.html" class="position-absolute tm-img-overlay">--}}
+        {{--                                <i class="fas fa-play tm-overlay-icon"></i>--}}
+        {{--                            </a>--}}
+        {{--                        </div>--}}
+        {{--                        <div class="p-3 tm-catalog-item-description">--}}
+        {{--                            <h3 class="tm-text-gray text-center tm-catalog-item-title">Nam tincidunt consectetur</h3>--}}
+        {{--                        </div>--}}
+        {{--                    </div>--}}
+        {{--                    <div class="col-lg-4 col-md-6 col-sm-12 tm-catalog-item">--}}
+        {{--                        <div class="position-relative tm-thumbnail-container">--}}
+        {{--                            <img src="img/tn-02.jpg" alt="Image" class="img-fluid tm-catalog-item-img">--}}
+        {{--                            <a href="video-page.html" class="position-absolute tm-img-overlay">--}}
+        {{--                                <i class="fas fa-play tm-overlay-icon"></i>--}}
+        {{--                            </a>--}}
+        {{--                        </div>--}}
+        {{--                        <div class="p-3 tm-catalog-item-description">--}}
+        {{--                            <h3 class="tm-text-gray text-center tm-catalog-item-title">Praesent posuere rhoncus</h3>--}}
+        {{--                        </div>--}}
+        {{--                    </div>--}}
+        {{--                    <div class="col-lg-4 col-md-6 col-sm-12 tm-catalog-item">--}}
+        {{--                        <div class="position-relative tm-thumbnail-container">--}}
+        {{--                            <img src="img/tn-03.jpg" alt="Image" class="img-fluid tm-catalog-item-img">--}}
+        {{--                            <a href="video-page.html" class="position-absolute tm-img-overlay">--}}
+        {{--                                <i class="fas fa-play tm-overlay-icon"></i>--}}
+        {{--                            </a>--}}
+        {{--                        </div>--}}
+        {{--                        <div class="p-3 tm-catalog-item-description">--}}
+        {{--                            <h3 class="tm-text-gray text-center tm-catalog-item-title">Turpis massa aliquam</h3>--}}
+        {{--                        </div>--}}
+        {{--                    </div>--}}
+        {{--                    <div class="col-lg-4 col-md-6 col-sm-12 tm-catalog-item">--}}
+        {{--                        <div class="position-relative tm-thumbnail-container">--}}
+        {{--                            <img src="img/tn-04.jpg" alt="Image" class="img-fluid tm-catalog-item-img">--}}
+        {{--                            <a href="video-page.html" class="position-absolute tm-img-overlay">--}}
+        {{--                                <i class="fas fa-play tm-overlay-icon"></i>--}}
+        {{--                            </a>--}}
+        {{--                        </div>--}}
+        {{--                        <div class="p-3 tm-catalog-item-description">--}}
+        {{--                            <h3 class="tm-text-gray text-center tm-catalog-item-title">Nam tincidunt consectetur</h3>--}}
+        {{--                        </div>--}}
+        {{--                    </div>--}}
+        {{--                    <div class="col-lg-4 col-md-6 col-sm-12 tm-catalog-item">--}}
+        {{--                        <div class="position-relative tm-thumbnail-container">--}}
+        {{--                            <img src="img/tn-05.jpg" alt="Image" class="img-fluid tm-catalog-item-img">--}}
+        {{--                            <a href="video-page.html" class="position-absolute tm-img-overlay">--}}
+        {{--                                <i class="fas fa-play tm-overlay-icon"></i>--}}
+        {{--                            </a>--}}
+        {{--                        </div>--}}
+        {{--                        <div class="p-3 tm-catalog-item-description">--}}
+        {{--                            <h3 class="tm-text-gray text-center tm-catalog-item-title">Praesent posuere rhoncus</h3>--}}
+        {{--                        </div>--}}
+        {{--                    </div>--}}
+        {{--                    <div class="col-lg-4 col-md-6 col-sm-12 tm-catalog-item">--}}
+        {{--                        <div class="position-relative tm-thumbnail-container">--}}
+        {{--                            <img src="img/tn-06.jpg" alt="Image" class="img-fluid tm-catalog-item-img">--}}
+        {{--                            <a href="video-page.html" class="position-absolute tm-img-overlay">--}}
+        {{--                                <i class="fas fa-play tm-overlay-icon"></i>--}}
+        {{--                            </a>--}}
+        {{--                        </div>--}}
+        {{--                        <div class="p-3 tm-catalog-item-description">--}}
+        {{--                            <h3 class="tm-text-gray text-center tm-catalog-item-title">Turpis massa aliquam</h3>--}}
+        {{--                        </div>--}}
+        {{--                    </div>--}}
+        {{--                </div>--}}
+        {{--            </div>--}}
+        {{--        </div>--}}
     </main>
     <style>
-        .tm-video-description-box p{
-            line-height: 1!important;
+        .tm-video-description-box p {
+            line-height: 1 !important;
         }
-        td{
+
+        td {
             border: 1px solid grey;
         }
     </style>

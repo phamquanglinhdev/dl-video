@@ -10,13 +10,6 @@
     <!-- https://fonts.google.com/ -->
     <link rel="stylesheet" href="{{asset("css/bootstrap.min.css")}}">
     <link rel="stylesheet" href="{{asset("css/templatemo-video-catalog.css")}}">
-    <!--
-
-    TemplateMo 552 Video Catalog
-
-    https://templatemo.com/tm-552-video-catalog
-
-    -->
 </head>
 
 <body>
@@ -28,7 +21,7 @@
                     <div class="col-7 col-md-4">
                         <a href="{{route("index")}}" class="tm-bg-black text-center tm-logo-container">
                             <i class="fas fa-video tm-site-logo mb-3"></i>
-                            <h1 class="tm-site-name">Video Catalog</h1>
+                            <h1 class="tm-site-name">DL DEVS VIDEO</h1>
                         </a>
                     </div>
                     <div class="col-5 col-md-8 ml-auto mr-0">
@@ -44,9 +37,21 @@
                                 </button>
                                 <div class="collapse navbar-collapse tm-nav" id="navbar-nav">
                                     <ul class="navbar-nav text-uppercase">
-                                        <li class="nav-item active">
-                                            <a class="nav-link tm-nav-link" href="#">Videos <span class="sr-only">(current)</span></a>
-                                        </li>
+                                        @if(backpack_auth()->check())
+                                            <li class="nav-item active">
+                                                <a class="nav-link tm-nav-link">{{backpack_user()->name}}</a>
+                                            </li>
+                                            <li class="nav-item active">
+                                                <a class="nav-link tm-nav-link" href="{{route("backpack.auth.logout")}}">Đăng xuất</a>
+                                            </li>
+                                        @else
+                                            <li class="nav-item active">
+                                                <a class="nav-link tm-nav-link" href="{{route("backpack.auth.login")}}">Đăng nhập</a>
+                                            </li>
+                                            <li class="nav-item active">
+                                                <a class="nav-link tm-nav-link" href="{{route("backpack.auth.register")}}">Đăng ký</a>
+                                            </li>
+                                        @endif
                                     </ul>
                                 </div>
                             </nav>
@@ -60,7 +65,7 @@
 
     <div class="container-fluid">
         <div id="content" class="mx-auto tm-content-container">
-            @yield("main");
+            @yield("main")
             <!-- Subscribe form and footer links -->
             <div class="row mt-5 pt-3">
                 <div class="col-xl-6 col-lg-12 mb-4">

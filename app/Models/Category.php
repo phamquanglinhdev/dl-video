@@ -31,6 +31,9 @@ class Category extends Model
         function Videos(){
             return $this->hasMany(Video::class,"category_id","id");
         }
+        function Users(){
+            return $this->belongsToMany(User::class,"user_category","category_id","user_id");
+        }
     /*
     |--------------------------------------------------------------------------
     | RELATIONS

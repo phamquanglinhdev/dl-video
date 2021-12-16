@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\IndexController;
+use App\Http\Controllers\VideoController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,8 +17,5 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/{id?}/',[IndexController::class,"index","id"])->where(["id"])->name("index");
 
-Route::get('/view/{id}', function ($id) {
-    $video = \App\Models\Video::find($id);
-    return view('client.video',["video"=>$video]);
-})->name("video");
+Route::get('/view/{id}',[VideoController::class,"show","id"])->where(["id"])->name("video");
 

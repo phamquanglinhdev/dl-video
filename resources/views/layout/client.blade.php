@@ -117,8 +117,8 @@
 
 </div> <!-- .tm-page-wrap -->
 
-<script src="js/jquery-3.4.1.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
+<script src="{{asset("js/jquery-3.4.1.min.js")}}"></script>
+<script src="{{asset("js/bootstrap.min.js")}}"></script>
 <script>
     function setVideoSize() {
         const vidWidth = 1920;
@@ -179,6 +179,7 @@
         });
     })
 </script>
+@yield("script")
 </body>
 
 </html>

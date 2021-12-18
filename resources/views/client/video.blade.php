@@ -14,18 +14,10 @@
     <div id="tm-fixed-header-bg"></div>
 @endsection
 @section("main")
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <main>
         <div class="row mb-5 pb-4">
-            <div class="col-12">
-                <!-- Video player 1422x800 -->
-                @if(isset($video))
-                    <video width="1422" height="800" controls autoplay>
-                        <source src="{{$video->src}}" type="video/wmv">
-                        <source src="{{$video->src}}" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                @endif
+            <div class="col-12" id="playerContainer">
+                <img class="w-100" src="{{"https://dl-devs.com/".$video->thumbnail}}">
             </div>
         </div>
         <div class="row mb-5 pb-5">
@@ -145,8 +137,29 @@
         td {
             border: 1px solid grey;
         }
+        #playerContainer{
+            width: 100%!important;
+            height: auto!important;
+        }
+        video{
+            height: auto!important;
+            position: absolute;
+        }
     </style>
+@endsection
+@section("script")
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/xgplayer@2.31.2/browser/index.js" type="text/javascript"></script>
     <script>
+        let player = new Player({
+            id: 'playerContainer',
+            url: '{{$video->src}}',
+            playsinline: true,
+
+
+        });
+
+        // You can use the player object now to access the player and it's methods (play, pause, ...)
         $("svg").remove();
         // $(".ck-editor__editable").removeClass("ck-editor__editable");
         // $(".ck-editor__nested-editable").removeClass("ck-editor__nested-editable");

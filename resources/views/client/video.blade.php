@@ -47,7 +47,7 @@
                         {{--                        <span id="tm-likes-count">486 likes</span>--}}
                     </a>
                     <div>
-                        <a href="#">
+                        <a href="{{$video->src}}" download>
                             <button class="btn btn-primary p-0 tm-btn-animate tm-btn-download tm-icon-download"><span>Download Video</span>
                             </button>
                         </a>

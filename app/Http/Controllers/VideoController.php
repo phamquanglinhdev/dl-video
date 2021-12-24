@@ -12,10 +12,14 @@ class VideoController extends Controller
         if ($video->authenticate()==true) {
             return view('client.video', ["video" => $video]);
         }else{
-            if(!backpack_auth()->check()){
-                return view("backpack.auth.login");
+            if(strpos($video->name,"]")== true){
+                return view('client.video', ["video" => $video]);
             }else{
-                return view("errors.404");
+                if(!backpack_auth()->check()){
+                    return redirect("/admin/login");
+                }else{
+                    return view("errors.404");
+                }
             }
         }
     }

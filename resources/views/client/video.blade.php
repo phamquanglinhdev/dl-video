@@ -155,8 +155,6 @@
             id: 'playerContainer',
             url: '{{$video->src}}',
             playsinline: true,
-
-
         });
 
         // You can use the player object now to access the player and it's methods (play, pause, ...)

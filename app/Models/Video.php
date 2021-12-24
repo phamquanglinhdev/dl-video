@@ -22,6 +22,7 @@ class Video extends Model
     }
     public function authenticate(){
         $isAccess = false;
+
         if(backpack_auth()->check()){
             if(backpack_user()->role==0){
                 return true;
